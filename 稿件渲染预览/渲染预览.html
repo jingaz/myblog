@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="text/html">
+    <meta name="author" content="liujing">
+    <title>渲染预览</title>
+    <link rel="stylesheet" type="text/css" href="./blogs/style.css">
+    <script src="./blogs/marked.min.js"></script>
+</head>
+<body>
+    <div id="header">
+      <h1 id="title"><a href=".">目录</a></h1>
+      <div class="links">
+          <a href=".." target="_blank"><div class="iconfont icon-rss"></div></a>
+          <a href="https://github.com/jingaz" target="_blank"><div class="iconfont icon-github"></div></a>
+          <a href="https://ljwonder.com/1" target="_blank"><div class="iconfont icon-author"></div></a>
+      </div>
+    </div>
+    <div id="main">
+        <div id="post">
+            <div class="main">
+            <h3 class="date" id="date_for_now"></h3>
+            <h1 id="title_text"></h1>
+            <input type="file" id="files" multiple="single" onchange="import_file();" />
+            <div id="content"></div>
+            <script>
+                document.getElementById('date_for_now').innerHTML =new Date().toLocaleDateString();
+                function import_file(){
+                    var selectedFile = document.getElementById("files").files[0];//获取读取的File对象
+                    document.getElementById('title_text').innerHTML=selectedFile.name;//读取选中文件的文件名;
+                    var reader = new FileReader();//这里是核心！！！读取操作就是由它完成的。
+                    reader.readAsText(selectedFile);//读取文件的内容
+                    reader.onload = function(){
+                        document.getElementById('content').innerHTML =marked(this.result);//当读取完成之后会回调这个函数，然后此时文件的内容存储到了result中。直接操作即可。
+                    };
+                }                
+            </script>
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

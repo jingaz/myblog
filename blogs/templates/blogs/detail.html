@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="text/html">
+    <meta name="author" content="liujing">
+    <title>wqdks | {{ article.title_text }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}">
+</head>
+<body>
+    <div id="header">
+      <h1 id="title"><a href="..">wqdks</a></h1>
+      <div class="links">
+          <a href=".." target="_blank"><div class="iconfont icon-rss"></div></a>
+          <a href="https://github.com/jingaz" target="_blank"><div class="iconfont icon-github"></div></a>
+          <a href="../20" target="_blank"><div class="iconfont icon-author"></div></a>
+      </div>
+    </div>
+    <div id="main">
+        <div id="post">
+            <div class="main">
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{%  endif %}
+            <h3 class="date">{{ article.pub_date | date:"Y/m/d"}}</h3>
+            <h1>{{ article.title_text }}</h1>
+            <div id="content"></div>
+            <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+            <script>
+                function getFileFromServer(file_url, doneCallback) {
+                    var xhr;                    
+                    xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = handleStateChange;
+                    xhr.open("GET", file_url, true);
+                    xhr.send();
+
+                    function handleStateChange() {
+                        if (xhr.readyState === 4) {
+                            doneCallback(xhr.status == 200 ? xhr.responseText : null);
+                        }
+                    }
+                }
+                getFileFromServer("../media/{{ article.content_path }}", function(context_text){
+                    if(context_text == null){
+                        //An error occurred
+                    }
+                    else{
+                        document.getElementById('content').innerHTML =
+                        marked(context_text);
+                    }
+                });                            
+            </script>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

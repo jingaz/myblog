@@ -5,6 +5,7 @@
     <meta content="text/html">
     <meta name="author" content="liujing">
     <title>wqdks | {{ article.title_text }}</title>
+    <link href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}">
 </head>
@@ -14,7 +15,7 @@
       <div class="links">
           <a href=".." target="_blank"><div class="iconfont icon-rss"></div></a>
           <a href="https://github.com/jingaz" target="_blank"><div class="iconfont icon-github"></div></a>
-          <a href="../20" target="_blank"><div class="iconfont icon-author"></div></a>
+          <a href="../1" target="_blank"><div class="iconfont icon-author"></div></a>
       </div>
     </div>
     <div id="main">
@@ -24,7 +25,8 @@
             <h3 class="date">{{ article.pub_date | date:"Y/m/d"}}</h3>
             <h1>{{ article.title_text }}</h1>
             <div id="content"></div>
-            <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>            
+            <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
             <script>
                 function getFileFromServer(file_url, doneCallback) {
                     var xhr;                    
@@ -45,7 +47,8 @@
                     }
                     else{
                         document.getElementById('content').innerHTML =
-                        marked(context_text);
+                        marked(context_text,
+                        {highlight: (code) => hljs.highlightAuto(code).value});
                     }
                 });                            
             </script>

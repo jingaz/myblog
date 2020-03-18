@@ -7,6 +7,9 @@
     <title>渲染预览</title>
     <link rel="stylesheet" type="text/css" href="./blogs/style.css">
     <script src="./blogs/marked.min.js"></script>
+    <link href="./blogs/solarized-dark.min.css" rel="stylesheet">
+    <script src="./blogs/highlight.min.js"></script>
+    
 </head>
 <body>
     <div id="header">
@@ -31,12 +34,13 @@
                     document.getElementById('title_text').innerHTML=selectedFile.name;//读取选中文件的文件名;
                     var reader = new FileReader();//这里是核心！！！读取操作就是由它完成的。
                     reader.readAsText(selectedFile);//读取文件的内容
-                    reader.onload = function(){
-                        document.getElementById('content').innerHTML =marked(this.result);//当读取完成之后会回调这个函数，然后此时文件的内容存储到了result中。直接操作即可。
+                    reader.onload = function(){      
+                        document.getElementById('content').innerHTML =marked(this.result,
+                        {highlight: (code) => hljs.highlightAuto(code).value});//当读取完成之后会回调这个函数，然后此时文件的内容存储到了result中。直接操作即可。
                     };
                 }                
             </script>
-
+            
 
             </div>
         </div>

@@ -79,8 +79,12 @@
 
 ~~~c
 #include<stdio.h>
+int printstr(const char *str){
+    printf("%s", str);
+    return 0;
+}
 int main(void){
-    printf("Hello World.\n");
+    printstr("Hello World.\n");
 }
 ~~~
 

@@ -38,6 +38,11 @@ server {
 		alias /var/www/myblog/media/;
 		}
 	}
+server {
+    listen 80;
+    server_name  ljwonder.com  www.ljwonder.com;
+    rewrite ^(.*) https://ljwonder.com$1 permanent;
+}
 ~~~
 
 第8、9行的full_chain.pem和private.key是在[FreeSSl](https://freessl.cn/)用**浏览器**生成的。

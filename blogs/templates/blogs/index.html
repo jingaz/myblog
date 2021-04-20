@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta content="text/html">
@@ -8,27 +9,40 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}">
 </head>
+
 <body>
     <div id="header">
-      <h1 id="title"><a href=".">wqdks</a></h1>
-          <div class="links"><a href="/" target="_blank"><div class="iconfont icon-rss"></div></a>
-          <a href="https://github.com/jingaz" target="_blank"><div class="iconfont icon-github"></div></a>
-          <a href="./20" target="_blank"><div class="iconfont icon-author"></div></a>
-      </div>
+        <h1 id="title"><a href=".">wqdks</a></h1>
+        <div class="links"><a href="/" target="_blank">
+                <div class="iconfont icon-rss"></div>
+            </a>
+            <a href="https://github.com/jingaz" target="_blank">
+                <div class="iconfont icon-github"></div>
+            </a>
+            <a href="./20" target="_blank">
+                <div class="iconfont icon-author"></div>
+            </a>
+        </div>
     </div>
     <div id="main">
         <div id="posts">
-        {% if latest_article_list %}
+            {% if latest_article_list %}
             {% for article in latest_article_list %}
             <div class="post">
-            <span class="date">{{ article.pub_date | date:"Y/m/d" }}</span>
-            <span class="title"><a href="{% url 'blogs:detail' article.id %}">{{article.title_text}}</a></span>           
+                <span class="date">{{ article.pub_date | date:"Y/m/d" }}</span>
+                <span class="title"><a href="{% url 'blogs:detail' article.id %}">{{article.title_text}}</a></span>
             </div>
             {% endfor %}
-        {% else %}
+            {% else %}
             <p class="title">No articles are available.</p>
-        {% endif %}
+            {% endif %}
         </div>
     </div>
+    <div id="footer">
+        <a href="http://beian.miit.gov.cn/">
+            <center>网站备案号</center>
+        </a>
+    </div>
 </body>
+
 </html>

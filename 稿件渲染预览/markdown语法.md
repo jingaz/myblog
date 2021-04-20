@@ -23,6 +23,18 @@
 
 ![天空之城](https://cdn-hz.skypixel.com/uploads/cn_files/photo/image/3edc3097-6708-4d59-8a0e-0cf827bde8f2.JPG@!1920 "天空之城")
 
+**方法一：嵌入HTML代码使用img标签**
+
+ <img src="./xxx.png" width = "300" height = "200" alt="图片名称" align=center />
+ 
+ 附：如果需要居中的话只要在外面包围div标签即可
+
+<div  align="center">    
+...
+</div>
+
+
+
 另一种超链接写法：[链接名][链接代号]
 
 [here][3]
@@ -38,10 +50,10 @@
 
 
 <video width="100%" controls="controls">
-    <source src="https://us-videos.dji.net/video_trans/aa59483be0b34052ba62c4430ad966ef/720.mp4">
+    <source src="./static/720.mp4">
 </video>
 
-<audio controls="controls" src="https://s128.xiami.net/978/978/4905/59454_1511602653251.mp3?ccode=xiami_web_web&expire=86400&duration=271&psid=bd764e41cbf65a52e853a71ed27f0950&ups_client_netip=222.89.18.128&ups_ts=1584274605&ups_userid=0&utid=VonxFtn1e34CAasMvf40aPYk&vid=59454&fn=59454_1511602653251.mp3&vkey=Bd3064b5fadf46e0939f440bb7af34458">
+<audio controls="controls" src="./static/寂寞又美好.flac">
 </audio>
 
 <i class="iconfont icon-github"></i> 图标文字
@@ -79,12 +91,8 @@
 
 ~~~c
 #include<stdio.h>
-int printstr(const char *str){
-    printf("%s", str);
-    return 0;
-}
 int main(void){
-    printstr("Hello World.\n");
+    printf("Hello World.\n");
 }
 ~~~
 

@@ -74,7 +74,7 @@ $ ps -ef | grep uwsgi
 ~~~
 
 ---
----
+
 后台上传原始markdown格式的稿件之前，可以用浏览器打开*渲染预览.html* **预览网页显示效果。**
 
 收到一个安全警告[GHSA-2m34-jcjv-45xf](https://github.com/advisories/GHSA-2m34-jcjv-45xf)，好家伙2020年6月6日发布的，过了大半年才收到邮件提示  
@@ -84,3 +84,7 @@ $ ps -ef | grep uwsgi
 ```python
 $ python -m pip install -U Django
 ```
+---
+
+修改了样式表，增加了li元素之间的间隔    
+升级了uwsgi版本依赖 2.0.18 -> 2.0.19.1
